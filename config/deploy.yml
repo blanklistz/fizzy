@@ -21,7 +21,10 @@ proxy:
 
 # Your application configuration.
 # Secrets (secret_key_base, smtp, vapid) are stored in Rails credentials.
+# RAILS_MASTER_KEY is needed to decrypt credentials.yml.enc
 env:
+  secret:
+    - RAILS_MASTER_KEY
   clear:
     MAILER_FROM_ADDRESS: "Fizzy <support@sakolabs.com>" # The email "from" address that Fizzy sends email from
     MULTI_TENANT: false # Set to true to allow multiple accounts to sign up

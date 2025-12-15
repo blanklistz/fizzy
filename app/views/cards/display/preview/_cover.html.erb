@@ -1,0 +1,12 @@
+<% if card.cover_image? %>
+  <div class="card__cover">
+    <% cover = card.cover_image %>
+    <% if cover.is_a?(ActiveStorage::Attachment) %>
+      <%= image_tag cover.variant(Attachments::VARIANTS[:cover]), loading: "lazy", alt: "" %>
+    <% elsif cover.respond_to?(:variable?) && cover.variable? %>
+      <%= image_tag cover.variant(Attachments::VARIANTS[:cover]), loading: "lazy", alt: "" %>
+    <% elsif cover.is_a?(ActionText::Attachables::RemoteImage) %>
+      <%= image_tag cover.url, loading: "lazy", alt: "" %>
+    <% end %>
+  </div>
+<% end %>

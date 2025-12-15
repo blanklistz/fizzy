@@ -381,6 +381,25 @@
     border-block-end: 1px dashed currentcolor;
   }
 
+  /* Cover Image
+  /* ------------------------------------------------------------------------ */
+
+  .card__cover {
+    block-size: 150px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    margin-block-start: calc(-1 * var(--card-padding-block));
+    margin-block-end: var(--card-padding-block);
+    margin-inline: calc(-1 * var(--card-padding-inline));
+    overflow: hidden;
+
+    img {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
   /* Misc bits
   /* ------------------------------------------------------------------------ */
 

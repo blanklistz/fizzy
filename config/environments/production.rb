@@ -5,16 +5,16 @@ Rails.application.configure do
 
   # Email provider Settings
   #
-  # SMTP settings are configured via Rails credentials.
+  # SMTP settings are configured via Rails credentials under :aws key.
   # Run `bin/rails credentials:edit` to configure smtp settings.
-  if smtp = Rails.application.credentials.dig(:smtp)
+  if aws = Rails.application.credentials.dig(:aws)
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: smtp[:address],
-      port: smtp[:port] || 587,
-      user_name: smtp[:user_name],
-      password: smtp[:password],
-      authentication: smtp[:authentication] || :login
+      address: "email-smtp.#{aws[:region]}.amazonaws.com",
+      port: 587,
+      user_name: aws[:ses_smtp_username],
+      password: aws[:ses_smtp_password],
+      authentication: :login
     }
   end
 

@@ -8,7 +8,7 @@ image: fizzy
 # Where to deploy fizzy
 servers:
   web:
-    - 5.223.73.241
+    - 37.27.181.71
 
 # How you connect to your server
 ssh:
